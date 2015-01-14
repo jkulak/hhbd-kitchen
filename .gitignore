@@ -1,4 +1,11 @@
 /cookbooks/
-.vagrant/*
+.vagrant
+/cookbooks
 
+# Bundler
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
 Berksfile.lock
