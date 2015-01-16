@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         chef.log_level = :info
 
-        # chef.encrypted_data_bag_secret_key_path = './encrypted_data_bag_secret'
+        chef.encrypted_data_bag_secret_key_path = './encrypted_data_bag_secret'
 
         chef.data_bags_path = "./data_bags"
         chef.environments_path = "./environments"
@@ -52,6 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         chef.run_list = [
             # System common
+            "recipe[jku-common]",
             "recipe[jku-apache]",
             "recipe[jku-mysql]",
             # System specific (hhbd)
