@@ -29,14 +29,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.name = MACHINE_NAME
 
         vb.memory = 1024
-        vb.cpus = 2
+        vb.cpus = 1
     end
 
     # Configure networking
     config.vm.network :private_network, ip: "192.168.99.99"
 
     # Configure synced folders
-    # config.vm.synced_folder "../../inr-api",      "/var/www/html/inr-api/releases/initial"
+    config.vm.synced_folder "../hhbd-app/www", "/var/www/jk/hhbd.pl.vmx/releases/initial"
     config.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Configure provisioning
@@ -57,8 +57,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-mysql]",
             # System specific (hhbd)
             "recipe[hhbd-app::default]",
-            "recipe[hhbd-backend::default]",
-            "recipe[hhbd-content::default]"
+            # "recipe[hhbd-backend::default]",
+            # "recipe[hhbd-content::default]"
         ]
 
         # Here, overwrite all atributes that were set in recipes
