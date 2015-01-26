@@ -8,3 +8,4 @@
 #
 
 include_recipe "hhbd-app::install"
+include_recipe "hhbd-app::install_db"

@@ -36,13 +36,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network :private_network, ip: "192.168.99.99"
 
     # Configure synced folders
-    config.vm.synced_folder "../hhbd-app/www", "/var/www/jk/hhbd.pl.vmx/releases/initial"
+    config.vm.synced_folder "../hhbd-app/www", "/var/www/hhbd.pl.vmx/releases/initial"
     config.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Configure provisioning
     config.vm.provision "chef_solo" do |chef|
 
-        chef.log_level = :info
+        chef.log_level = :warn
 
         chef.encrypted_data_bag_secret_key_path = './encrypted_data_bag_secret'
 
@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-mysql]",
             # System specific (hhbd)
             "recipe[hhbd-app::default]",
-            # "recipe[hhbd-backend::default]",
+            # "recipe[hhbd-backoffice::default]",
             # "recipe[hhbd-content::default]"
         ]
 

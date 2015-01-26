@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: app-recipes-backend
-# Recipe:: deploy
+# Cookbook Name:: hhbd-app
+# Recipe:: install
 #
 # Copyright 2015, WebAsCrazy.net <jakub.kulak@gmail.com>
 #
@@ -70,8 +70,7 @@ end
 
 # Create log directory
 directory "/var/log/#{node["hhbd-app"]["url"]}" do
-    user node["deploy"]["user"]
-    group node["deploy"]["group"]
+    user "www-data"
     mode 00755
     action :create
     recursive true
@@ -82,6 +81,6 @@ web_app "000-#{node["hhbd-app"]["url"]}" do
     server_name "#{node["hhbd-app"]["url"]}"
     server_aliases ["www.#{node["hhbd-app"]["url"]}"]
     allow_override "All"
-    docroot "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www"
+    docroot "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www/public"
     cookbook "apache2"
 end

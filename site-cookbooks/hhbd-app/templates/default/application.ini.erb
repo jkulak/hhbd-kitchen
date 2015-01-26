@@ -16,14 +16,14 @@ autoloadernamespaces.jkl = Jkl_
 
 ; baza danych
 resources.db.adapter = PDO_MYSQL
-resources.db.params.host = <% @config.db.host -%>
-resources.db.params.port = <% @config.db.port -%>
-resources.db.params.username = <% @config.db.username -%>
-resources.db.params.password = <% @config.db.password -%>
-resources.db.params.dbname = <% @config.db.name -%>
+resources.db.params.host = <%= @config.db.host %>
+resources.db.params.port = <%= @config.db.port %>
+resources.db.params.username = <%= @config.db.username %>
+resources.db.params.password = <%= @config.db.password %>
+resources.db.params.dbname = <%= @config.db.name %>
 
 resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
-resources.frontController.baseUrl = <% @config.base_url -%>
+resources.frontController.baseUrl = <%= @config.base_url %>
 resources.layout.layoutpath = APPLICATION_PATH "/layouts"
 
 app.showAds = 1
@@ -42,27 +42,27 @@ app.cache.backend.compression = true
 
 app.includes.jquery.path = "/js/jquery-1.4.4.min.js"
 
-app.paths.albumCoverPath = <% "#{@config.base_url}/a/" -%>
-app.paths.albumThumbnailPath = <% "#{@config.base_url}/a/th/" -%>
+app.paths.albumCoverPath = <%= "#{@config.base_url}/a/" %>
+app.paths.albumThumbnailPath = <%= "#{@config.base_url}/a/th/" %>
 app.paths.albumThumbnailSuffix = -th.jpg
 
-app.paths.artistPhotoPath = <% "#{@config.base_url}/p/" -%>
-app.paths.artistThumbnailPath = <% "#{@config.base_url}/p/th/" -%>
+app.paths.artistPhotoPath = <%= "#{@config.base_url}/p/" %>
+app.paths.artistThumbnailPath = <%= "#{@config.base_url}/p/th/" %>
 
-app.paths.labelLogoPath = <% "#{@config.base_url}/l/" -%>
-app.paths.news.image = <% "#{@config.base_url}/news/" -%>
+app.paths.labelLogoPath = <%= "#{@config.base_url}/l/" %>
+app.paths.news.image = <%= "#{@config.base_url}/news/" %>
 
 ; ***********
 ; * MAIL    *
 ; ***********
 resources.mail.transport.type = smtp
-resources.mail.transport.host = <% @config.mailserver.host -%>
+resources.mail.transport.host = <%= @config.mailserver.host %>
 resources.mail.transport.auth = login
 resources.mail.transport.ssl = ssl
-resources.mail.transport.username = <% @config.mailserver.username -%>
-resources.mail.transport.password = <% @config.mailserver.password -%>
-resources.mail.defaultFrom.email = <% @config.mailserver.email -%>
-resources.mail.defaultFrom.name = <% @config.mailserver.from -%>
+resources.mail.transport.username = <%= @config.mailserver.username %>
+resources.mail.transport.password = <%= @config.mailserver.password %>
+resources.mail.defaultFrom.email = <%= @config.mailserver.email %>
+resources.mail.defaultFrom.name = <%= @config.mailserver.from %>
 
 ; ***********
 ; * LOGGERS
