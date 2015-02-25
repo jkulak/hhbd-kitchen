@@ -1,0 +1,12 @@
+server {
+    listen 80;
+    server_name www.hhbd.pl.vmx hhbd.pl.vmx;
+    root /var/www/html;
+    index index.php index.html;
+
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+    # location ~* \.(js|css|jpg|jpeg|gif|png|svg|ico|pdf)$ {
+    #}
+}

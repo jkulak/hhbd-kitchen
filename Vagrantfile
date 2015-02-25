@@ -37,6 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Configure synced folders
     config.vm.synced_folder "../hhbd-app/www", "/var/www/hhbd.pl.vmx/releases/initial"
+    config.vm.synced_folder "../hhbd-content", "/var/www/s.hhbd.pl/www"
     config.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Configure provisioning
@@ -55,10 +56,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-common]",
             "recipe[jku-apache]",
             "recipe[jku-mysql]",
+            "recipe[jku-nginx]",
+
             # System specific (hhbd)
             "recipe[hhbd-app::default]",
-            # "recipe[hhbd-backoffice::default]",
-            # "recipe[hhbd-content::default]"
+            "recipe[hhbd-backoffice::default]",
+            "recipe[hhbd-content::default]",
         ]
 
         # Here, overwrite all atributes that were set in recipes
@@ -70,6 +73,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                     "passwordless" => true,
                 }
             },
+            "apache" => {
+                "listen_ports" => [8080]
+            }
           }
     end
 end

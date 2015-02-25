@@ -7,13 +7,8 @@
 
 # Additional packages
 
-include_recipe "jku-memcached"
 include_recipe "jku-common"
-
-package 'php5-gd'
-package 'php5-mysql'
-package 'php5-common'
-package "php5-memcache"
+include_recipe "jku-memcached"
 
 # Create initial release repository
 directory "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/initial" do
@@ -84,3 +79,9 @@ web_app "000-#{node["hhbd-app"]["url"]}" do
     docroot "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www/public"
     cookbook "apache2"
 end
+
+template "/etc/nginx/sites-available/hhbd.pl.conf" do
+    source "hhbd.pl.conf.erb"
+    mode "0644"
+end
+

@@ -42,15 +42,15 @@ app.cache.backend.compression = true
 
 app.includes.jquery.path = "/js/jquery-1.4.4.min.js"
 
-app.paths.albumCoverPath = <%= "#{@config.base_url}/a/" %>
-app.paths.albumThumbnailPath = <%= "#{@config.base_url}/a/th/" %>
+app.paths.albumCoverPath = <%= "#{@config.static_content_url}/a/" %>
+app.paths.albumThumbnailPath = <%= "#{@config.static_content_url}/a/th/" %>
 app.paths.albumThumbnailSuffix = -th.jpg
 
-app.paths.artistPhotoPath = <%= "#{@config.base_url}/p/" %>
-app.paths.artistThumbnailPath = <%= "#{@config.base_url}/p/th/" %>
+app.paths.artistPhotoPath = <%= "#{@config.static_content_url}/p/" %>
+app.paths.artistThumbnailPath = <%= "#{@config.static_content_url}/p/th/" %>
 
-app.paths.labelLogoPath = <%= "#{@config.base_url}/l/" %>
-app.paths.news.image = <%= "#{@config.base_url}/news/" %>
+app.paths.labelLogoPath = <%= "#{@config.static_content_url}/l/" %>
+app.paths.news.image = <%= "#{@config.static_content_url}/news/" %>
 
 ; ***********
 ; * MAIL    *
