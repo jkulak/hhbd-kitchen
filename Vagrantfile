@@ -16,6 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.berkshelf.berksfile_path = "Berksfile"
 
     config.vm.box = "ubuntu/trusty64"
+    # config.vm.box = "larryli/utopic64"
     config.vm.hostname = MACHINE_NAME
 
     if Vagrant.has_plugin?("vagrant-cachier")
@@ -43,20 +44,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Configure provisioning
     config.vm.provision "chef_solo" do |chef|
 
-        chef.log_level = :warn
+        chef.log_level = :debug
 
         chef.encrypted_data_bag_secret_key_path = './encrypted_data_bag_secret'
 
         chef.data_bags_path = "./data_bags"
-        chef.environments_path = "./environments"
+        # chef.environments_path = "./environments"
         # chef.environment = "local"
 
         chef.run_list = [
             # System common
             "recipe[jku-common]",
+            "recipe[jku-nginx]",
             "recipe[jku-apache]",
             "recipe[jku-mysql]",
-            "recipe[jku-nginx]",
+
 
             # System specific (hhbd)
             "recipe[hhbd-app::default]",

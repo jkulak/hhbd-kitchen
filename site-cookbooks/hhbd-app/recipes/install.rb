@@ -80,8 +80,11 @@ web_app "000-#{node["hhbd-app"]["url"]}" do
     cookbook "apache2"
 end
 
-template "/etc/nginx/sites-available/hhbd.pl.conf" do
-    source "hhbd.pl.conf.erb"
+template "/etc/nginx/sites-available/hhbd.pl" do
+    source "hhbd.pl.erb"
     mode "0644"
 end
 
+nginx_site 'hhbd.pl' do
+    enable true
+end

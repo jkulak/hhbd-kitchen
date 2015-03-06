@@ -10,11 +10,14 @@
 include_recipe "jku-common"
 include_recipe "jku-nginx"
 
-nginx_site 's.hhbd.pl.vmx' do
-  host 's.hhbd.pl.vmx'
-  root "#{node['apache']['docroot_dir']}/s.hhbd.pl/www"
+template "/etc/nginx/sites-available/s.hhbd.pl" do
+    source "s.hhbd.pl.erb"
+    mode "0644"
 end
 
+nginx_site 's.hhbd.pl' do
+    enable true
+end
 
 # # http://s.hhbd.pl.vmx/
 # web_app "001-s.hhbd.pl.vmx" do

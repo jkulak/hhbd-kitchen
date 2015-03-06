@@ -1,0 +1,20 @@
+server {
+  listen 80;
+  server_name s.hhbd.pl.vmx;
+  root /var/www/s.hhbd.pl/www;
+
+  index index.html index.htm;
+
+  location / {
+    try_files $uri $uri/;
+  }
+
+
+  # Deny access to .htaccess & .htpasswd files
+  location ~ /\.ht {
+    deny all;
+  }
+
+  access_log /var/log/nginx/s.hhbd.pl.vmx.access.log;
+  error_log  /var/log/nginx/s.hhbd.pl.vmx.error.log error;
+}

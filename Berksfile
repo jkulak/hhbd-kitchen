@@ -19,4 +19,3 @@ cookbook "hhbd-app",      "~>0.1.0",  path: "./site-cookbooks/hhbd-app"
 cookbook "hhbd-backoffice",  "~>0.1.0",  path: "./site-cookbooks/hhbd-backoffice"
 cookbook "hhbd-content",  "~>0.1.0",  path: "./site-cookbooks/hhbd-content"
 
-cookbook "nginx", '~> 0.6.0', git: "https://github.com/phlipper/chef-nginx.git"
