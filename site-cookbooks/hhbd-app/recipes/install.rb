@@ -28,14 +28,6 @@ directory "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/
     group node[:deploy][:group]
 end
 
-directory "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/preinitial" do
-    mode 00755
-    action :create
-    recursive true
-    user node[:deploy][:user]
-    group node[:deploy][:group]
-end
-
 # Create current symlinks
 link "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/current" do
     to "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/initial"
