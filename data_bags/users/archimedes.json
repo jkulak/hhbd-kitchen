@@ -1,5 +1,0 @@
-{
-  "id": "archimedes",
-  "comment": "Used for all automated actions",
-  "ssh_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5nD38cturTalWz1tDoYc5njEKY03ymTSvnBAeiMfbuFsC+U2maM99z4fwZpI35wykknIKq8qrhXn3AgobwDQjuCY6KaJWOLXQlvQ1Of+zEi0ZZwqkZwiX45w4vRifAcAmZ7UzzBCvMg75weuryNNB8ljsIa1/Ut9wMjDCD/et8OJw54aOiSuVSD3jWHh94DVo/QCFduNolxPvNLaXJbmdBhGxkKBwY87TcC5GtBceayX0Sh+L4YvzH/GYSzJD+rDJTgyH7XAqOc8pSLx9xoALXKr4TwHZDH/A3s1Ko9zkINFmVV9NwbWE1vj+iLvis21XDHtgTN+nmgMRpBXHxkmh strider@do-diogenes"]
-}

@@ -6,29 +6,24 @@
 #
 
 # Additional packages
-
 include_recipe "jku-common"
 include_recipe "jku-nginx"
 
-template "/etc/nginx/sites-available/s.hhbd.pl" do
+# Create initial release repository
+directory "#{node['apache']['docroot_dir']}/#{node["hhbd-content"]["url"]}/www" do
+    mode 00755
+    action :create
+    recursive true
+    user node[:deploy][:user]
+    group node[:deploy][:group]
+end
+
+template "/etc/nginx/sites-available/#{node["hhbd-content"]["url"]}" do
     source "s.hhbd.pl.erb"
     mode "0644"
+    variables('server_name' => node["hhbd-content"]["url"])
 end
 
-nginx_site 's.hhbd.pl' do
+nginx_site node["hhbd-content"]["url"] do
     enable true
 end
-
-# # http://s.hhbd.pl.vmx/
-# web_app "001-s.hhbd.pl.vmx" do
-#   server_name "s.hhbd.pl.vmx"
-#   allow_override "All"
-#   docroot "#{node['apache']['docroot_dir']}/s.hhbd.pl"
-#   cookbook 'apache2'
-# end
-
-# # Copy configuration file
-# template "#{node['apache']['docroot_dir']}/#{node["app"]["hhbd-app"]["app_name"]}/application/configs/application.ini" do
-#     source "application.ini.erb"
-#     variables('config' => node['app']['hhbd-app']['config'])
-# end

@@ -28,6 +28,7 @@ link "#{node['apache']['docroot_dir']}/#{node["app-xadmin"]["url"]}/releases/cur
     to "#{node['apache']['docroot_dir']}/#{node["app-xadmin"]["url"]}/releases/initial"
     user node[:deploy][:user]
     group node[:deploy][:group]
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-xadmin"]["url"]}/releases/current") }
 end
 
 # Create previous symlink
@@ -35,6 +36,7 @@ link "#{node['apache']['docroot_dir']}/#{node["app-xadmin"]["url"]}/releases/pre
     to "#{node['apache']['docroot_dir']}/#{node["app-xadmin"]["url"]}/releases/preinitial"
     user node[:deploy][:user]
     group node[:deploy][:group]
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-xadmin"]["url"]}/releases/previous") }
 end
 
 # Create current->www symlink
@@ -42,6 +44,7 @@ link "#{node['apache']['docroot_dir']}/#{node["app-xadmin"]["url"]}/www" do
     to "#{node['apache']['docroot_dir']}/#{node["app-xadmin"]["url"]}/releases/current"
     user node[:deploy][:user]
     group node[:deploy][:group]
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-xadmin"]["url"]}/www") }
 end
 
 # create apache vhost
@@ -55,8 +58,9 @@ end
 
 # copy nginx configuration
 template "/etc/nginx/sites-available/#{node["app-xadmin"]["url"]}" do
-    source "#{node["app-xadmin"]["url"]}.erb"
+    source "xadmin.hhbd.pl.erb"
     mode "0644"
+    variables('server_name' => node["app-xadmin"]["url"])
 end
 
 # enable nginx configuration

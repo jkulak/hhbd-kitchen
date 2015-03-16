@@ -59,6 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-common]",
             "recipe[jku-nginx]",
             "recipe[jku-apache]",
+            "recipe[jku-php]",
             "recipe[jku-mysql]",
 
             # System specific (hhbd)
