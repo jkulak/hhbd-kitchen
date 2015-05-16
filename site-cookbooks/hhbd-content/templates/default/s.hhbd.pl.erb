@@ -1,12 +1,12 @@
 server {
   listen 80;
-  server_name s.hhbd.pl.vmx;
-  root /var/www/s.hhbd.pl/www;
+  server_name <%= @server_name %>;
+  root /var/www/<%= @server_name %>/www;
 
   index index.html index.htm;
 
   location / {
-    try_files $uri $uri/;
+    # try_files $uri $uri/;
   }
 
 
@@ -15,6 +15,6 @@ server {
     deny all;
   }
 
-  access_log /var/log/nginx/s.hhbd.pl.vmx.access.log;
-  error_log  /var/log/nginx/s.hhbd.pl.vmx.error.log error;
+  access_log /var/log/nginx/<%= @server_name %>.access.log;
+  error_log  /var/log/nginx/<%= @server_name %>.error.log error;
 }

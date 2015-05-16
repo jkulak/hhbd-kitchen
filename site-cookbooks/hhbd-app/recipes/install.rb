@@ -28,19 +28,12 @@ directory "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/
     group node[:deploy][:group]
 end
 
-directory "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/preinitial" do
-    mode 00755
-    action :create
-    recursive true
-    user node[:deploy][:user]
-    group node[:deploy][:group]
-end
-
 # Create current symlinks
 link "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/current" do
     to "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/initial"
     user node[:deploy][:user]
     group node[:deploy][:group]
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/current") }
 end
 
 # Create previous symlink
@@ -48,6 +41,7 @@ link "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/previ
     to "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/preinitial"
     user node[:deploy][:user]
     group node[:deploy][:group]
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/current") }
 end
 
 # Create current->www symlink
@@ -55,12 +49,15 @@ link "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www" do
     to "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/releases/current"
     user node[:deploy][:user]
     group node[:deploy][:group]
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www") }
 end
 
 # Copy configuration file
-template "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www/application/configs/application.ini" do
-    source "application.ini.erb"
-    variables('config' => node["hhbd-app"]["config"])
+if node.chef_environment == "local"
+    template "#{node['apache']['docroot_dir']}/#{node["hhbd-app"]["url"]}/www/application/configs/application.ini" do
+        source "application.ini.erb"
+        variables('config' => node["hhbd-app"]["config"])
+    end
 end
 
 # Create log directory
@@ -80,11 +77,12 @@ web_app "000-#{node["hhbd-app"]["url"]}" do
     cookbook "apache2"
 end
 
-template "/etc/nginx/sites-available/hhbd.pl" do
+template "/etc/nginx/sites-available/#{node["hhbd-app"]["url"]}" do
     source "hhbd.pl.erb"
     mode "0644"
+    variables('server_name' => node["hhbd-app"]["url"])
 end
 
-nginx_site 'hhbd.pl' do
+nginx_site node["hhbd-app"]["url"] do
     enable true
 end

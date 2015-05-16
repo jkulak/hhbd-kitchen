@@ -1,11 +1,11 @@
-hhbd-backend CHANGELOG
+hhbd-xadmin CHANGELOG
 ======================
 
-This file is used to list changes made in each version of the hhbd-backend cookbook.
+This file is used to list changes made in each version of the hhbd-xadmin cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of hhbd-backend
+- [your_name] - Initial release of hhbd-xadmin
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

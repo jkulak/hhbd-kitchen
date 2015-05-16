@@ -37,8 +37,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network :private_network, ip: "192.168.99.99"
 
     # Configure synced folders
-    config.vm.synced_folder "../hhbd-app/www", "/var/www/hhbd.pl.vmx/releases/initial"
-    config.vm.synced_folder "../hhbd-content", "/var/www/s.hhbd.pl/www"
+    config.vm.synced_folder "../hhbd-app",                  "/var/www/hhbd.pl.vmx/releases/initial"
+    config.vm.synced_folder "../hhbd-content",              "/var/www/s.hhbd.pl/www"
+    config.vm.synced_folder "../hhbd-backoffice/admin",     "/var/www/admin.hhbd.pl.vmx/releases/initial"
+    config.vm.synced_folder "../hhbd-backoffice/xadmin",    "/var/www/xadmin.hhbd.pl.vmx/releases/initial"
     config.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Configure provisioning
@@ -57,13 +59,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-common]",
             "recipe[jku-nginx]",
             "recipe[jku-apache]",
+            "recipe[jku-php]",
             "recipe[jku-mysql]",
 
-
             # System specific (hhbd)
-            "recipe[hhbd-app::default]",
-            "recipe[hhbd-backoffice::default]",
-            "recipe[hhbd-content::default]",
+            # "recipe[hhbd-content::default]",
+            # "recipe[hhbd-app::default]",
+            # "recipe[hhbd-admin::default]",
+            # "recipe[hhbd-xadmin::default]",
         ]
 
         # Here, overwrite all atributes that were set in recipes
