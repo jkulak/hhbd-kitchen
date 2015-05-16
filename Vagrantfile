@@ -63,10 +63,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-mysql]",
 
             # System specific (hhbd)
-            "recipe[hhbd-content::default]",
-            "recipe[hhbd-app::default]",
-            "recipe[hhbd-admin::default]",
-            "recipe[hhbd-xadmin::default]",
+            # "recipe[hhbd-content::default]",
+            # "recipe[hhbd-app::default]",
+            # "recipe[hhbd-admin::default]",
+            # "recipe[hhbd-xadmin::default]",
         ]
 
         # Here, overwrite all atributes that were set in recipes

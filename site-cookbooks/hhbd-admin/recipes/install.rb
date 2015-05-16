@@ -28,7 +28,7 @@ link "#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/curr
     to "#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/initial"
     user node[:deploy][:user]
     group node[:deploy][:group]
-    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-admin"]["url"]}/releases/current") }
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/current") }
 end
 
 # Create previous symlink
@@ -36,7 +36,7 @@ link "#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/prev
     to "#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/preinitial"
     user node[:deploy][:user]
     group node[:deploy][:group]
-    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-admin"]["url"]}/releases/previous") }
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/previous") }
 end
 
 # Create current->www symlink
@@ -44,7 +44,7 @@ link "#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/www" do
     to "#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/releases/current"
     user node[:deploy][:user]
     group node[:deploy][:group]
-    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["hhbd-admin"]["url"]}/www") }
+    not_if { File.symlink?("#{node['apache']['docroot_dir']}/#{node["app-admin"]["url"]}/www") }
 end
 
 # create apache vhost
