@@ -41,12 +41,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder "../hhbd-content",              "/var/www/s.hhbd.pl/www"
     config.vm.synced_folder "../hhbd-backoffice/admin",     "/var/www/admin.hhbd.pl.vmx/releases/initial"
     config.vm.synced_folder "../hhbd-backoffice/xadmin",    "/var/www/xadmin.hhbd.pl.vmx/releases/initial"
-    config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder ".",                            "/vagrant", disabled: true
 
     # Configure provisioning
     config.vm.provision "chef_solo" do |chef|
 
-        chef.log_level = :debug
+        chef.log_level = :warn
 
         chef.encrypted_data_bag_secret_key_path = './encrypted_data_bag_secret'
 
@@ -63,10 +63,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             "recipe[jku-mysql]",
 
             # System specific (hhbd)
-            # "recipe[hhbd-content::default]",
-            # "recipe[hhbd-app::default]",
-            # "recipe[hhbd-admin::default]",
-            # "recipe[hhbd-xadmin::default]",
+            "recipe[hhbd-content::default]",
+            "recipe[hhbd-app::default]",
+            "recipe[hhbd-admin::default]",
+            "recipe[hhbd-xadmin::default]",
         ]
 
         # Here, overwrite all atributes that were set in recipes
