@@ -1,4 +1,0 @@
-{
-  "id": "example_user_name",
-  "ssh_keys": ["ssh-rsa ... example_user_name@some_server_here"]
-}

@@ -1,4 +1,6 @@
 {
-  "id": "jkulak",
-  "ssh_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD5w1N/h+1oPoOsliTQr/MVJSnjP9/5PEBuvFXQw5qeGgnpRjIPENXFKdGO5f4MHmK0ofZf645qWV2mre5lAPp5Zm8SG6DyF0HQTe+fbChgdsvZg/8PHHQZmK1leWYInGFwlz6JSEh+30gXYqeH6NLcO9gnQLDTnHZLgT2atvUnxj9uq2B0oqpikMoWILkFQ2YzbCe7t8sctzai07mETqJn2idfT9oydeirAIBGWNiKui/Vhs5H3lU+ut7lTXtfPSrOY70vh+1ViUVCdvNQiWUxt0wegBvosQXfsRQCFSlDuCrbZm3HXCQ53GjdT7m1DdQZlzLsqx98aUdHer229ifD jkulak@griller"]
+    "id": "jkulak",
+    "ssh_keys": [
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD5w1N/h+1oPoOsliTQr/MVJSnjP9/5PEBuvFXQw5qeGgnpRjIPENXFKdGO5f4MHmK0ofZf645qWV2mre5lAPp5Zm8SG6DyF0HQTe+fbChgdsvZg/8PHHQZmK1leWYInGFwlz6JSEh+30gXYqeH6NLcO9gnQLDTnHZLgT2atvUnxj9uq2B0oqpikMoWILkFQ2YzbCe7t8sctzai07mETqJn2idfT9oydeirAIBGWNiKui/Vhs5H3lU+ut7lTXtfPSrOY70vh+1ViUVCdvNQiWUxt0wegBvosQXfsRQCFSlDuCrbZm3HXCQ53GjdT7m1DdQZlzLsqx98aUdHer229ifD jkulak@griller"
+    ]
 }

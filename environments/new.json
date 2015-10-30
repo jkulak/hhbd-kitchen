@@ -1,0 +1,39 @@
+{
+    "chef_type": "environment",
+    "cookbook_versions": {},
+    "default_attributes": {
+        "authorization": {
+            "sudo": {
+                "passwordless": true,
+                "users": [
+                    "jkulak"
+                ]
+            }
+        },
+        "jku-mysql": {
+            "mysql": {
+                "master": {
+                    "db_dump": "db1_2015-09-22.sql",
+                    "db_name": "db1",
+                    "host": "127.0.0.1",
+                    "port": "3306",
+                    "root_password": "dupa",
+                    "user": "www",
+                    "user_password": "www",
+                    "version": "5.6"
+                }
+            }
+        },
+        "hhbd-apps": {
+            "website": {
+            }
+        },
+        "users": [
+            "jkulak"
+        ]
+    },
+    "description": "New production environment",
+    "json_class": "Chef::Environment",
+    "name": "new",
+    "override_attributes": {}
+}
