@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
   # https://docs.vagrantup.com.
 
   # Lock Chef version
-  config.omnibus.chef_version = "12.5.1" #  :latest
+  config.omnibus.chef_version = :latest
 
   # Fix to: https://github.com/mitchellh/vagrant/issues/1673
   # config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
